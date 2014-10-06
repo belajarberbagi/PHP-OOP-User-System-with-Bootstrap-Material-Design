@@ -98,7 +98,7 @@ if(Input::exists()) {
 
                                 </div>
                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                                     <a style="float: right;" href="register.php">Need a account?</a>
                             </fieldset>
                         </form>
