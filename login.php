@@ -60,6 +60,7 @@ if(Input::exists()) {
     <link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.5/parsley.js"></script>
 
     <?php require_once 'header.php'; ?>
 
@@ -93,10 +94,10 @@ if(Input::exists()) {
 
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" id="remember"> Remember Me
+                                        <input type="checkbox" name="remember" id="remember">Remember Me
                                     </label>
-
                                 </div>
+
                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                                 <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                                     <a style="float: right;" href="register.php">Need a account?</a>
@@ -115,7 +116,7 @@ if(Input::exists()) {
     <script src="js/material.js"></script>
     <script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.5/parsley.js"></script>
+
 
     <script>
         $("#login").parsley({
