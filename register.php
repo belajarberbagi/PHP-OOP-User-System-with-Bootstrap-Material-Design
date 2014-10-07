@@ -62,8 +62,8 @@ if (Input::exists()) {
                     'group' => 1
                 ));
 
-                Session::flash('home', 'Welcome <b>' . Input::get('username') . '</b>! Your account has been registered. You may now log in.');
-                Redirect::to('index.php');
+                Session::flash('success', 'Welcome <b>' . Input::get('username') . '</b>!<br>Your account has been registered. You may now log in.');
+                Redirect::to('login.php');
             } catch(Exception $e) {
                 echo $error, '<br>';
             }
@@ -141,7 +141,7 @@ if (Input::exists()) {
 
                             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
                             <input class="btn btn-lg btn-success btn-block" type="submit" value="Register">
-                                <a style="float: right;" href="login.php">Already registered?</a>
+                            <a style="float: right;" href="login.php">Already registered?</a>
                         </fieldset>
                     </form>
                 </div>
@@ -151,26 +151,26 @@ if (Input::exists()) {
 </div>
 
 
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/ripples.js"></script>
-    <script src="js/material.js"></script>
-    <script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/ripples.js"></script>
+<script src="js/material.js"></script>
+<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 
-    <script>
-        $("#register").parsley({
-            successClass: "has-success",
-            errorClass: "has-error",
-            classHandler: function (el) {
-                return el.$element.closest(".form-group");
-            },
-            errorsContainer: function (el) {
-                return el.$element.closest(".form-group");
-            },
-            errorsWrapper: "<span class='help-block'></span>",
-            errorTemplate: "<span></span>"
-        });
-    </script>
+<script>
+    $("#register").parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsWrapper: "<span class='help-block'></span>",
+        errorTemplate: "<span></span>"
+    });
+</script>
 
 <?php require_once 'footer.php'; ?>
 

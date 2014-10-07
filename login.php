@@ -71,6 +71,20 @@ if(Input::exists()) {
 <div class="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">
+            <?php
+            //Alert Boxes
+            if(Session::exists('success')) {
+                echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('success'). '</div></div>';
+            } else {
+                if (Session::exists('error')) {
+                    echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('error') . '</div></div>';
+                } else {
+                    if (Session::exists('info')) {
+                        echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('info') . '</div></div>';
+                    }
+                }
+            }
+            ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Login</h3>
@@ -82,27 +96,27 @@ if(Input::exists()) {
                     }
                     ?>
 
-                        <form action="" method="post" name="login" id="login" data-parsley-validate>
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Username" name="username" id="username" autofocus="" required>
-                                </div>
+                    <form action="" method="post" name="login" id="login" data-parsley-validate>
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Username" name="username" id="username" autofocus="" required>
+                            </div>
 
-                                <div class="form-group">
-                                    <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
-                                </div>
+                            <div class="form-group">
+                                <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
+                            </div>
 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" id="remember">Remember Me
-                                    </label>
-                                </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember" id="remember">Remember Me
+                                </label>
+                            </div>
 
-                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-                                    <a style="float: right;" href="register.php">Need a account?</a>
-                            </fieldset>
-                        </form>
+                            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                            <a style="float: right;" href="register.php">Need a account?</a>
+                        </fieldset>
+                    </form>
 
                 </div>
             </div>
@@ -111,27 +125,27 @@ if(Input::exists()) {
 </div>
 
 
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/ripples.js"></script>
-    <script src="js/material.js"></script>
-    <script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/ripples.js"></script>
+<script src="js/material.js"></script>
+<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 
 
-    <script>
-        $("#login").parsley({
-            successClass: "has-success",
-            errorClass: "has-error",
-            classHandler: function (el) {
-                return el.$element.closest(".form-group");
-            },
-            errorsContainer: function (el) {
-                return el.$element.closest(".form-group");
-            },
-            errorsWrapper: "<span class='help-block'></span>",
-            errorTemplate: "<span></span>"
-        });
-    </script>
+<script>
+    $("#login").parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsWrapper: "<span class='help-block'></span>",
+        errorTemplate: "<span></span>"
+    });
+</script>
 
 <?php require_once 'footer.php'; ?>
 
