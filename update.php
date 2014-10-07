@@ -33,7 +33,7 @@ if(Input::exists()) {
                     'name' => Input::get('name')
                 ));
 
-                Session::flash('home', 'Your details have been updated.');
+                Session::flash('success', 'Your details have been updated.');
                 Redirect::to('index.php');
 
             } catch(Exception $e) {

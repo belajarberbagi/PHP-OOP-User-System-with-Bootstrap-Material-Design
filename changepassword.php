@@ -41,7 +41,7 @@ if(Input::exists()) {
                 'salt' => $salt
             ));
 
-            Session::flash('home', 'Your password has been changed!');
+            Session::flash('success', 'Your password has been changed!');
             Redirect::to('index.php');
         }
     } else {
