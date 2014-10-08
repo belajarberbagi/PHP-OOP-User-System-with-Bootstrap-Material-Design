@@ -57,7 +57,7 @@ if(!$user->hasPermission('admin')) {
             <div class="jumbotron">
                 <div class="container">
                     <h1>Admin Panel</h1>
-                    <p>Shhh, this is super duper secret.</p>
+                    <p>Shhh. This is super duper secret.</p>
                 </div>
             </div>
 
@@ -164,7 +164,7 @@ if(!$user->hasPermission('admin')) {
 <script type="text/javascript">
     CKEDITOR.replace( 'news-body',
         {
-            toolbar : 'Basic' /* this does the magic */
+            toolbar : 'Basic'
         });
 </script>
 
