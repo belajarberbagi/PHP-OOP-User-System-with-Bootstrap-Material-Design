@@ -4,7 +4,6 @@
  */
 
 ?>
-
 <div class="navbar navbar-material-googlegrey navbar-fixed-bottom" style="background-color: #404040;">
     <div class="container">
         <p class="navbar-text pull-left">© 2014 - Site Built By Chris Tran

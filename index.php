@@ -23,11 +23,12 @@ if(!$user->isLoggedIn()) {
     <link href="css/ripples.css" rel="stylesheet">
     <link href="css/material-wfont.min.css" rel="stylesheet">
     <link href="css/icons-material-design.css" rel="stylesheet">
-    <link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
+    <link href="css/snackbar.css" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
     <?php require_once 'header.php'; ?>
+
 </head>
 
 <body>
@@ -64,16 +65,40 @@ if(!$user->isLoggedIn()) {
         ?>
 
     </div>
+    <span class="btn btn-material-lightgreen" data-toggle=snackbar data-content="This is a Snackbar Test!" data-timeout="4000">Snackbar Test</span>
+
 </div>
 
 <?php require_once 'footer.php'; ?>
 
-</body>
-
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/ripples.js"></script>
 <script src="js/material.js"></script>
-<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+<script src="js/snackbar.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+
+    <?php
+
+    if(Session::exists('welcome_back')) {
+
+    ?>
+
+        <script>
+            $(document).ready(function () {
+                $.snackbar({
+                    content: "Welcome back <b><?php echo escape($user->data()->username); ?>!</b>",
+                    style: "snackbox",
+                    timeout: 3000
+                });
+            });
+
+        </script>
+
+    <?php
+        Session::delete('welcome_back');
+    }
+    ?>
+
+</body>
 
 </html>

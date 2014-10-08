@@ -63,7 +63,7 @@ if(Input::exists()) {
     <link href="css/ripples.css" rel="stylesheet">
     <link href="css/material-wfont.min.css" rel="stylesheet">
     <link href="css/icons-material-design.css" rel="stylesheet">
-    <link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
+    <link href="css/snackbar.css" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
@@ -114,7 +114,7 @@ if(Input::exists()) {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/ripples.js"></script>
 <script src="js/material.js"></script>
-<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+<script src="js/snackbar.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.5/parsley.js"></script>
 
