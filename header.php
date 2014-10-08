@@ -101,7 +101,16 @@ $user = new User();
                                         <p class="text-left"><strong><?php echo escape($user->data()->name); ?></strong></p>
                                         <p class="text-left small"><?php echo escape($user->data()->email); ?></p>
                                         <p class="text-left">
-                                            <button class="btn btn-primary btn-block btn-sm" onclick="location.href='update.php'">Update Profile</button>
+                                            <button class="btn btn-primary btn-block btn-sm" onclick="location.href='update.php'">Edit Profile</button>
+                                            <?php
+                                            if($user->hasPermission('admin')) {
+                                            ?>
+
+                                                <button class="btn btn-success btn-block btn-sm" onclick="location.href='admin.php'">Admin Panel</button>
+
+                                            <?php
+                                            }
+                                            ?>
                                         </p>
                                     </div>
                                 </div>
@@ -141,5 +150,8 @@ $user = new User();
 </div>
 
 <style>
-    body { padding-top: 70px; }
+    body {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
 </style>
