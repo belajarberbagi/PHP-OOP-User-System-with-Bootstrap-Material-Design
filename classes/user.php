@@ -105,6 +105,16 @@ class User {
         return false;
     }
 
+    public function countUserTable($table) {
+        $totalUsers = $this->_db->query('SELECT * FROM ' . $table);
+            return $totalUsers->count();
+    }
+
+    public function getUserInfo($order, $limit) { //getUserInfo('joined DESC', 2);
+        $userInfo = $this->_db->query('SELECT id, username, name, email, joined FROM users ORDER BY ' . $order . ' LIMIT ' . $limit);
+            return $userInfo->results();
+    }
+
     public function exists() {
         return (!empty($this->_data)) ? true : false;
     }

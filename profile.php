@@ -34,6 +34,7 @@ if(!$username = Input::get('user')) {
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
     <?php require_once 'header.php'; ?>
+
 </head>
 
 <body>
@@ -43,35 +44,41 @@ if(!$username = Input::get('user')) {
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo escape($user->data()->username); ?></h3>
+                    <h3 class="panel-title"><?php echo escape($data->username); ?></h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="Profile Picture" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                        <div class="col-md-3 col-lg-3" align="center"> <img alt="Profile Picture" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
 
-                        <div class=" col-md-9 col-lg-9 ">
+                        <div class="col-md-9 col-lg-9">
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
                                     <td>Full Name:</td>
-                                    <td><?php echo escape($user->data()->name); ?></td>
+                                    <td><?php echo escape($data->name); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Join Date:</td>
-                                    <td><?php echo escape(date('m/d/Y',strtotime($user->data()->joined))); ?></td>
+                                    <td><?php echo escape(date('m/j/Y', strtotime($data->joined))); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Group</td>
-                                    <td><?php echo escape($user->data()->group); ?></td>
+                                    <td><?php echo escape($data->group); ?></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-            <!--<div class="panel-footer">
-                </div> -->
+                <?php
+                if(Input::get('user') === $user->data()->username) {
+                ?>
+                    <div class="panel-footer">
+                        <a href="update.php" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -81,10 +88,10 @@ if(!$username = Input::get('user')) {
 
 </body>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/ripples.js"></script>
-<script src="js/material.js"></script>
-<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/ripples.js"></script>
+    <script src="js/material.js"></script>
+    <script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 
 </html>

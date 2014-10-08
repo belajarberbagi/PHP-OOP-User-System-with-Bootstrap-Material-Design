@@ -62,7 +62,7 @@ if (Input::exists()) {
                     'group' => 1
                 ));
 
-                Session::flash('success', 'Welcome <b>' . Input::get('username') . '</b>!<br>Your account has been registered. You may now log in.');
+                Session::flash('success', 'Welcome, <b>' . Input::get('username') . '</b>!<br>Your account has been registered. You may now log in.');
                 Redirect::to('login.php');
             } catch(Exception $e) {
                 echo $error, '<br>';
