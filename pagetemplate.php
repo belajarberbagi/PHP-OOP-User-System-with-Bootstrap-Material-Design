@@ -24,6 +24,7 @@ $user = new User(); //Current
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
     <?php require_once 'header.php'; ?>
+
 </head>
 
 <body>
@@ -34,7 +35,7 @@ $user = new User(); //Current
         <?php
         if($user->isLoggedIn()) {
 
-            //Alert Boxes
+            //Bootstrap Alert Boxes
             if(Session::exists('success')) {
                 echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('success'). '</div></div>';
             } else {
