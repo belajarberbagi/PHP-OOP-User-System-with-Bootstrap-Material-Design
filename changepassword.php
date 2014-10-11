@@ -29,24 +29,25 @@ if(Input::exists()) {
                 'matches' => 'new_password'
             )
         ));
-    }
 
-    if($validate->passed()) {
-        if(Hash::make(Input::get('current_password'), $user->data()->salt) !== $user->data()->password) {
-            echo 'Your current password is wrong.';
+        if ($validate->passed()) {
+            if (Hash::make(Input::get('current_password'), $user->data()->salt) !== $user->data()->password) {
+                Session::flash('error', 'Your current password is incorrect.');
+                Redirect::to('changepassword.php');
+            } else {
+                $salt = Hash::salt(32);
+                $user->update(array(
+                    'password' => Hash::make(Input::get('new_password'), $salt),
+                    'salt' => $salt
+                ));
+
+                Session::flash('success', 'Your password has been changed!');
+                Redirect::to('index.php');
+            }
         } else {
-            $salt = Hash::salt(32);
-            $user->update(array(
-                'password' => Hash::make(Input::get('new_password'), $salt),
-                'salt' => $salt
-            ));
-
-            Session::flash('success', 'Your password has been changed!');
-            Redirect::to('index.php');
-        }
-    } else {
-        foreach($validate->errors() as $error) {
-            echo $error, '<br>';
+            foreach ($validate->errors() as $error) {
+                echo $error, '<br>';
+            }
         }
     }
 }
@@ -80,6 +81,20 @@ if(Input::exists()) {
                     <h3 class="panel-title">Change Password</h3>
                 </div>
                 <div class="panel-body">
+                    <?php
+                    //Alert Boxes
+                    if(Session::exists('success')) {
+                        echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('success'). '</div></div>';
+                    } else {
+                        if (Session::exists('error')) {
+                            echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('error') . '</div></div>';
+                        } else {
+                            if (Session::exists('info')) {
+                                echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('info') . '</div></div>';
+                            }
+                        }
+                    }
+                    ?>
                     <form action="" method="post" name="changepassword" id="changepassword" data-parsley-validate>
                         <fieldset>
                             <div class="form-group">
