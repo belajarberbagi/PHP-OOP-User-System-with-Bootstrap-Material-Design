@@ -115,6 +115,11 @@ class User {
             return $userInfo->results();
     }
 
+    public function getNews($order, $limit) {
+        $news = $this->_db->query('SELECT title, body, author, date FROM news ORDER BY ' . $order . ' LIMIT ' . $limit);
+        return $news->results();
+    }
+
     public function exists() {
         return (!empty($this->_data)) ? true : false;
     }

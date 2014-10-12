@@ -10,7 +10,7 @@ $user = new User();
 <style>
     .navbar-login
     {
-        width: 250px;
+        width: 280px;
         padding: 10px;
         padding-bottom: 0px;
     }

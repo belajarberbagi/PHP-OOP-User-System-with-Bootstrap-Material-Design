@@ -10,6 +10,42 @@ $user = new User();
 if(!$user->hasPermission('admin')) {
     Redirect::to(404);
 }
+
+    if(Input::exists()) {
+        $validate = new Validate();
+
+        $validate->check($_POST, array(
+            'news-title' => array(
+                'field_name' => 'Title',
+                'required' => true,
+                'min' => 1,
+                'max' => 255
+            ),
+            'news-body' => array(
+                'field_name' => 'Body',
+                'required' => true,
+                'min' => 1
+            )
+        ));
+
+        if($validate->passed()) {
+            $admin = new Admin();
+
+            try {
+                $admin->insertNews(array(
+                    'title' => Input::get('news-title'),
+                    'body' => Input::get('news-body'),
+                    'author' => $user->data()->username,
+                    'date' => date('Y-m-d H:i:s')
+                ));
+
+                Session::flash('success', '<b>' . Input::get('news-title') . '</b> has been created.');
+                Redirect::to('admin.php');
+            } catch (Exception $e) {
+                echo $error, '<br>';
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
@@ -70,13 +106,13 @@ if(!$user->hasPermission('admin')) {
                         <form id="news" name="news" action="" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <label class="control-label" for="news-body">Title</label><br>
-                                    <input class="form-control" id="news-title" name="news-title" placeholder="Title">
+                                    <label class="control-label" for="news-title">Title</label><br>
+                                    <input class="form-control" id="news-title" name="news-title" placeholder="Title" value="<?php echo escape(Input::get('news-title')); ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label" for="news-body">Body</label>
-                                    <textarea id="news-body" name="news-body"></textarea>
+                                    <textarea id="news-body" name="news-body"><?php echo escape(Input::get('news-body')); ?></textarea>
                                 </div>
 
                                 <input class="btn btn-material-lightblue" style="float: left;" type="submit" value="Submit">
@@ -120,7 +156,7 @@ if(!$user->hasPermission('admin')) {
                                 </thead>
 
                                 <?php
-                                foreach($user->getUserInfo('joined DESC', 10) as $users) {
+                                foreach($user->getUserInfo('joined DESC', 10) as $users) { //Output Last 10 Registered Users
                                     ?>
 
                                     <tbody>

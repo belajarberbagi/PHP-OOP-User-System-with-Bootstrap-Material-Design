@@ -50,7 +50,7 @@ if(!$username = Input::get('user')) {
                     <div class="row">
                         <div class="col-md-3 col-lg-3" align="center"> <img alt="Profile Picture" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
 
-                        <hr>
+                        <br class="visible-sm visible-xs">
 
                         <div class="col-md-9 col-lg-9">
                             <table class="table table-user-information">

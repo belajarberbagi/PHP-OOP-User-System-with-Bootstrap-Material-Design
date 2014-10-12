@@ -60,13 +60,40 @@ if(!$user->isLoggedIn()) {
                 </div>
             </div>
 
+            <div class="col-md-8 panel panel-default">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <h1>News</h1>
+                    </div>
+                    <?php
+                        foreach($user->getNews('date DESC', 4) as $news) { //Output Last 4 News
+                    ?>
+
+                    <h3><?php echo escape($news->title); ?> <small>by <?php echo escape($news->author); ?></small></h3>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                                <?php echo html_entity_decode($news->body); ?>
+
+                        <hr>
+                        <h5 class="pull-right"><small>Posted on <?php echo escape(date('m/j/Y \a\t g:i A',strtotime($news->date))); ?></small></h5>
+                        </div>
+                    </div>
+                    <br>
+
+                    <?php
+                        }
+                    ?>
+
+                </div>
+            </div>
+
         <?php
         }
         ?>
 
     </div>
-    <span class="btn btn-material-lightgreen" data-toggle=snackbar data-content="This is a Snackbar Test!" data-timeout="4000">Snackbar Test</span>
-
 </div>
 
 <?php require_once 'footer.php'; ?>
