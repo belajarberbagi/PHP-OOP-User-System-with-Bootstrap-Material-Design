@@ -45,7 +45,7 @@ if(!$user->hasPermission('admin')) {
                 echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('success'). '</div></div>';
             } else {
                 if (Session::exists('error')) {
-                    echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('error') . '</div></div>';
+                    echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('error') . '</div></div>';
                 } else {
                     if (Session::exists('info')) {
                         echo '<div class="bs-component" style="padding: "><div class="alert alert-dismissable alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>' . Session::flash('info') . '</div></div>';
@@ -109,35 +109,36 @@ if(!$user->hasPermission('admin')) {
                         <h3 class="panel-title">Newest Users</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Joined</th>
-                            </thead>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                </thead>
 
-                        <?php
-                        foreach($user->getUserInfo('joined DESC', 10) as $users) {
-                        ?>
+                                <?php
+                                foreach($user->getUserInfo('joined DESC', 10) as $users) {
+                                    ?>
 
-                            <tbody>
-                                <tr>
-                                    <td><?php echo escape($users->id); ?></td>
-                                    <td><?php echo escape($users->name); ?></td>
-                                    <td><a href="profile.php?user=<?php echo escape($users->username); ?>"><?php echo escape($users->username); ?></a></td>
-                                    <td><?php echo escape($users->email); ?></td>
-                                    <td><?php echo escape(date('m/j/Y, g:i A',strtotime($users->joined))); ?></td>
-                                </tr>
-                            </tbody>
+                                    <tbody>
+                                    <tr>
+                                        <td><?php echo escape($users->id); ?></td>
+                                        <td><?php echo escape($users->name); ?></td>
+                                        <td><a href="profile.php?user=<?php echo escape($users->username); ?>"><?php echo escape($users->username); ?></a></td>
+                                        <td><?php echo escape($users->email); ?></td>
+                                        <td><?php echo escape(date('m/j/Y, g:i A',strtotime($users->joined))); ?></td>
+                                    </tr>
+                                    </tbody>
 
-                        <?php
-                        }
-                        ?>
+                                <?php
+                                }
+                                ?>
 
-                        </table>
-
+                            </table>
+                        </div>
                         <a href="admin/members.php" class="btn btn-primary">View All Members</a>
                     </div>
                 </div>

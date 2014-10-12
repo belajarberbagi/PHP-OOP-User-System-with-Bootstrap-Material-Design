@@ -71,7 +71,7 @@ if(Input::exists()) {
 
 <div class="container">
     <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
             <?php
             //Alert Boxes
             if(Session::exists('success')) {

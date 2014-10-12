@@ -10,7 +10,7 @@ $user = new User();
 <style>
     .navbar-login
     {
-        width: 305px;
+        width: 250px;
         padding: 10px;
         padding-bottom: 0px;
     }
@@ -25,6 +25,43 @@ $user = new User();
     .icon-size
     {
         font-size: 87px;
+    }
+
+    @media (max-width: 991px) {
+        .navbar-header {
+            float: none;
+        }
+        .navbar-left,.navbar-right {
+            float: none !important;
+        }
+        .navbar-toggle {
+            display: block;
+        }
+        .navbar-collapse {
+            border-top: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .navbar-fixed-top {
+            top: 0;
+            border-width: 0 0 1px;
+        }
+        .navbar-collapse.collapse {
+            display: none!important;
+        }
+        .navbar-nav {
+            float: none!important;
+            margin-top: 7.5px;
+        }
+        .navbar-nav>li {
+            float: none;
+        }
+        .navbar-nav>li>a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .collapse.in{
+            display:block !important;
+        }
     }
 </style>
 
@@ -64,24 +101,50 @@ $user = new User();
             case 'profile.php':
                 $('#profile').addClass('active');
                 break;
+            case 'update.php':
+                $('#update').addClass('active');
+                break;
         }
     });
 </script>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <a href="index.php" class="navbar-brand">Site Demo</a>
+
+            <a class="navbar-toggle" data-toggle="collapse" data-target=".navbarCollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
         </div>
+
         <?php
             if($user->isLoggedIn()) {
         ?>
-        <div class="collapse navbar-collapse">
+
+        <div class="collapse navbar-collapse navbarCollapse">
             <ul class="nav navbar-nav">
                 <li id="index"><a href="index.php">Dashboard</a></li>
                 <li id="profile"><a href="profile.php?user=<?php echo escape($user->data()->username); ?>">Profile</a></li>
+                <li class="visible-sm visible-xs" id="update"><a href="update.php">Edit Profile</a></li>
+                <?php
+                if($user->hasPermission('admin')) { //Show button for Admin Panel
+                    ?>
+                    <li class="visible-sm visible-xs" id="admin"><a href="admin.php">Admin Panel</a></li>
+                <?php
+                }
+                ?>
+                <li class="visible-sm visible-xs" id="logout"><a href="logout.php">Log out</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+
+
+            <ul class="visible-lg visible-md nav navbar-nav navbar-right">
                 <li class="dropdown keep_open">
                     <a href="#" class="dropdown-toggle keep_open" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
@@ -92,18 +155,14 @@ $user = new User();
                         <li>
                             <div class="navbar-login">
                                 <div class="row">
-                                    <div class="col-lg-4">
+
+                                    <div class="col-lg-12">
+                                        <p class="text-center" style="font-size: 18px;"><strong><?php echo escape($user->data()->name); ?></strong></p>
+                                        <p class="text-center" style="font-size: 12px;"><?php echo escape($user->data()->email); ?></p>
                                         <p class="text-center">
-                                            <span class="glyphicon glyphicon-user icon-size"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <p class="text-left"><strong><?php echo escape($user->data()->name); ?></strong></p>
-                                        <p class="text-left small"><?php echo escape($user->data()->email); ?></p>
-                                        <p class="text-left">
                                             <button class="btn btn-primary btn-block btn-sm" onclick="location.href='update.php'">Edit Profile</button>
                                             <?php
-                                            if($user->hasPermission('admin')) {
+                                            if($user->hasPermission('admin')) { //Show button for Admin Panel
                                             ?>
 
                                                 <button class="btn btn-success btn-block btn-sm" onclick="location.href='admin.php'">Admin Panel</button>
@@ -132,11 +191,12 @@ $user = new User();
                 </li>
             </ul>
         </div>
+
             <?php
-                } else {
+                } else { //Show this for users that aren't logged in
             ?>
 
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse navbarCollapse">
                 <ul class="nav navbar-nav">
                     <li id="login"><a href="login.php">Login</a></li>
                     <li id="register"><a href="register.php">Register</a></li>
@@ -146,6 +206,7 @@ $user = new User();
             <?php
                 }
             ?>
+
     </div>
 </div>
 

@@ -50,19 +50,21 @@ if(!$username = Input::get('user')) {
                     <div class="row">
                         <div class="col-md-3 col-lg-3" align="center"> <img alt="Profile Picture" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
 
+                        <hr>
+
                         <div class="col-md-9 col-lg-9">
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
-                                    <td>Full Name:</td>
+                                    <td><b>Full Name:</b></td>
                                     <td><?php echo escape($data->name); ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Join Date:</td>
+                                    <td><b>Join Date:</b></td>
                                     <td><?php echo escape(date('m/j/Y', strtotime($data->joined))); ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Group</td>
+                                    <td><b>Group</b></td>
                                     <td><?php echo escape($data->group); ?></td>
                                 </tr>
                                 </tbody>
@@ -72,7 +74,7 @@ if(!$username = Input::get('user')) {
                 </div>
                 <?php
                 if(Input::get('user') === $user->data()->username) {
-                ?>
+                    ?>
                     <div class="panel-footer">
                         <a href="update.php" class="btn btn-primary">Edit Profile</a>
                     </div>
@@ -88,10 +90,10 @@ if(!$username = Input::get('user')) {
 
 </body>
 
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/ripples.js"></script>
-    <script src="js/material.js"></script>
-    <script src="js/snackbar.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/ripples.js"></script>
+<script src="js/material.js"></script>
+<script src="js/snackbar.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
 
 </html>
