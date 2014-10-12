@@ -6,17 +6,12 @@
 ?>
 
 <style>
-
-
-
     @media (max-width: 400px) {
         .btn-responsive {
             padding:8px 5px;
             font-size:100%;
         }
     }
-
-
 </style>
 
 <div class="navbar navbar-material-googlegrey navbar-fixed-bottom" style="background-color: #404040;">
