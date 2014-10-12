@@ -131,7 +131,7 @@ if(!$user->hasPermission('admin')) {
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <span class="badge"><?php echo escape($user->countUserTable('users')); ?></span>
+                                <span class="badge"><?php echo escape($user->countTable('users')); ?></span>
                                 <b>Registered Users</b>
                             </li>
                         </ul>
@@ -156,7 +156,7 @@ if(!$user->hasPermission('admin')) {
                                 </thead>
 
                                 <?php
-                                foreach($user->getUserInfo('joined DESC', 10) as $users) { //Output Last 10 Registered Users
+                                foreach($user->getTable('users', array('id', 'name', 'username', 'email', 'kp'), 'joined DESC', 10) as $users) { //Output Last 10 Registered Users
                                     ?>
 
                                     <tbody>

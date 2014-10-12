@@ -115,7 +115,7 @@ $user = new User();
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a href="index.php" class="navbar-brand">Site Demo</a>
+            <a href="<?php echo SITE_ROOT; ?>/index.php" class="navbar-brand">Site Demo</a>
 
             <a class="navbar-toggle" data-toggle="collapse" data-target=".navbarCollapse">
                 <span class="icon-bar"></span>
@@ -130,17 +130,17 @@ $user = new User();
 
         <div class="collapse navbar-collapse navbarCollapse">
             <ul class="nav navbar-nav">
-                <li id="index"><a href="index.php">Dashboard</a></li>
-                <li id="profile"><a href="profile.php?user=<?php echo escape($user->data()->username); ?>">Profile</a></li>
-                <li class="visible-sm visible-xs" id="update"><a href="update.php">Edit Profile</a></li>
+                <li id="index"><a href="<?php echo SITE_ROOT; ?>/index.php">Dashboard</a></li>
+                <li id="profile"><a href="<?php echo SITE_ROOT; ?>/profile.php?user=<?php echo escape($user->data()->username); ?>">Profile</a></li>
+                <li class="visible-sm visible-xs" id="update"><a href="<?php echo SITE_ROOT; ?>/update.php">Edit Profile</a></li>
                 <?php
                 if($user->hasPermission('admin')) { //Show button for Admin Panel
                     ?>
-                    <li class="visible-sm visible-xs" id="admin"><a href="admin.php">Admin Panel</a></li>
+                    <li class="visible-sm visible-xs" id="admin"><a href="<?php echo SITE_ROOT; ?>/admin.php">Admin Panel</a></li>
                 <?php
                 }
                 ?>
-                <li class="visible-sm visible-xs" id="logout"><a href="logout.php">Log out</a></li>
+                <li class="visible-sm visible-xs" id="logout"><a href="<?php echo SITE_ROOT; ?>/logout.php">Log out</a></li>
             </ul>
 
 
@@ -160,12 +160,12 @@ $user = new User();
                                         <p class="text-center" style="font-size: 18px;"><strong><?php echo escape($user->data()->name); ?></strong></p>
                                         <p class="text-center" style="font-size: 12px;"><?php echo escape($user->data()->email); ?></p>
                                         <p class="text-center">
-                                            <button class="btn btn-primary btn-block btn-sm" onclick="location.href='update.php'">Edit Profile</button>
+                                            <button class="btn btn-primary btn-block btn-sm" onclick="location.href='<?php echo SITE_ROOT; ?>/update.php'">Edit Profile</button>
                                             <?php
                                             if($user->hasPermission('admin')) { //Show button for Admin Panel
                                             ?>
 
-                                                <button class="btn btn-success btn-block btn-sm" onclick="location.href='admin.php'">Admin Panel</button>
+                                                <button class="btn btn-success btn-block btn-sm" onclick="location.href='<?php echo SITE_ROOT; ?>/admin.php'">Admin Panel</button>
 
                                             <?php
                                             }
@@ -181,7 +181,7 @@ $user = new User();
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <p>
-                                            <button class="btn btn-danger btn-block" onclick="location.href='logout.php'">Log out</button>
+                                            <button class="btn btn-danger btn-block" onclick="location.href='<?php echo SITE_ROOT; ?>/logout.php'">Log out</button>
                                         </p>
                                     </div>
                                 </div>

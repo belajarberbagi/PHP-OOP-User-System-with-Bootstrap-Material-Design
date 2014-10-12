@@ -62,11 +62,13 @@ if(!$user->isLoggedIn()) {
 
             <div class="col-md-8 panel panel-default">
                 <div class="panel-body">
-                    <div class="page-header">
+                    <div class="panel-header">
                         <h1>News</h1>
                     </div>
+                    <hr>
+
                     <?php
-                        foreach($user->getNews('date DESC', 4) as $news) { //Output Last 4 News
+                        foreach($user->getTable('news', array('title', 'author', 'body', 'date'), 'date DESC', 4) as $news) { //Output Last 4 News
                     ?>
 
                     <h3><?php echo escape($news->title); ?> <small>by <?php echo escape($news->author); ?></small></h3>
