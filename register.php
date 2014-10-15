@@ -83,8 +83,7 @@ if (Input::exists()) {
     <title>Register</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/material.css" rel="stylesheet">
-    <link href="css/ripples.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/material-wfont.min.css" rel="stylesheet">
     <link href="css/icons-material-design.css" rel="stylesheet">
     <link href="css/snackbar.css" rel="stylesheet">
@@ -100,7 +99,7 @@ if (Input::exists()) {
 
 <div class="container">
     <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-6 col-centered">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Register</h3>
@@ -112,35 +111,45 @@ if (Input::exists()) {
                     }
                     ?>
 
-                    <form role="form" action="" method="post" name="register" id="register" data-parsley-validate>
+                    <form role="form" action="" method="post" name="register" id="register" class="form-horizontal" data-parsley-validate>
                         <fieldset>
                             <div class="form-group">
-                                <label class="control-label" for="name">Full Name</label>
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" id="name" value="<?php echo escape(Input::get('name')); ?>" autofocus="" data-parsley-trigger="change" data-parsley-minlength="2" data-parsley-maxlength="50" required/>
+                                <label class="col-lg-2 control-label" for="name">Name</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="text" name="name" placeholder="Full Name" id="name" value="<?php echo escape(Input::get('name')); ?>" autofocus="" data-parsley-trigger="change" data-parsley-minlength="2" data-parsley-maxlength="50" required/>
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="username">Username</label>
-                                <input class="form-control" type="text" name="username" placeholder="Username" id="username" value="<?php echo escape(Input::get('username')); ?>" data-parsley-trigger="change" data-parsley-minlength="2" data-parsley-maxlength="20" required/>
+                                <label class="col-lg-2 control-label" for="username">Username</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="text" name="username" placeholder="Username" id="username" value="<?php echo escape(Input::get('username')); ?>" data-parsley-trigger="change" data-parsley-minlength="2" data-parsley-maxlength="20" required/>
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="email">Email</label>
-                                <input class="form-control" type="email" name="email" placeholder="johndoe@email.com" id="username" value="<?php echo escape(Input::get('email')); ?>" data-parsley-trigger="change" required/>
+                                <label class="col-lg-2 control-label" for="email">Email</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="email" name="email" placeholder="johndoe@email.com" id="username" value="<?php echo escape(Input::get('email')); ?>" data-parsley-trigger="change" required/>
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="password">Password</label>
-                                <input class="form-control" type="password" name="password" placeholder="Password" id="password" data-parsley-trigger="change" data-parsley-minlength="6" required/>
+                                <label class="col-lg-2 control-label" for="password">Password</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="password" name="password" placeholder="Password" id="password" data-parsley-trigger="change" data-parsley-minlength="6" required/>
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="password_agains">Confirm Password</label>
-                                <input class="form-control" type="password" name="password_again" placeholder="Confirm Password" id="password_again" data-parsley-trigger="change" data-parsley-equalto="#password" required/>
+                                <label class="col-lg-2 control-label" for="password_agains">Confirm Password</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="password" name="password_again" placeholder="Confirm Password" id="password_again" data-parsley-trigger="change" data-parsley-equalto="#password" required/>
+                                    </div>
                             </div>
 
                             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Register">
+                            <input class="btn btn-primary btn-block" type="submit" value="Register">
                             <a style="float: right;" href="login.php">Already registered?</a>
                         </fieldset>
                     </form>

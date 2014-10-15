@@ -110,6 +110,7 @@ if(Input::get('submit')) {
         <?php
         } else {
         ?>
+
         <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -143,12 +144,15 @@ if(Input::get('submit')) {
                             <?php
                             }
                             ?>
+
                         </table>
+
                         <?php
                         if(count($user->getTable('news', array('id', 'title', 'author', 'date'), 'date DESC', 10)) < 1) {
                             echo '&nbsp;<b>Hmm, looks like there\'s no news.</b>';
                         }
                         ?>
+
                     </div>
                 </div>
             </div>

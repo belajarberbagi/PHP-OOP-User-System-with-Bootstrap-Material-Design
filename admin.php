@@ -112,10 +112,10 @@ if(!$user->hasPermission('admin')) {
 
                                 <div class="form-group">
                                     <label class="control-label" for="news-body">Body</label>
-                                    <textarea id="news-body" name="news-body"><?php echo escape(Input::get('news-body')); ?></textarea>
+                                    <textarea id="news-body" name="news-body" style="width: auto !important;"><?php echo escape(Input::get('news-body')); ?></textarea>
                                 </div>
 
-                                <input class="btn btn-material-lightblue" style="float: left;" type="submit" value="Submit">
+                                <input class="btn btn-material-bluegrey" style="float: left;" type="submit" value="Submit">
                                 <a href="admin/news.php" class="btn btn-primary">Manage News</a>
                             </fieldset>
                         </form>

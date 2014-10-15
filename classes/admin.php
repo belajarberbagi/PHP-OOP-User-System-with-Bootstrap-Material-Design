@@ -5,8 +5,7 @@
 
 class Admin {
 
-    private $_db,
-            $_data;
+    private $_db;
 
     public function __construct() {
         $this->_db = DB::getInstance();
@@ -19,6 +18,7 @@ class Admin {
 
     }
 
+    //Update News
     public function updateNews($fields = array(), $id = null) {
         if(!$this->_db->update('news', $id, $fields)) {
             throw new Exception('There was a problem updating');
@@ -35,10 +35,6 @@ class Admin {
     //Delete News
     public function deleteNews($id) {
         $this->_db->delete('news', array('id', '=', $id));
-    }
-
-    public function data(){
-        return $this->_data;
     }
 
 }
