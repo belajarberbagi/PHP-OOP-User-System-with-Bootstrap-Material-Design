@@ -55,6 +55,7 @@ if(Input::exists()) {
     <title>OOP Login/Register</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/material.css" rel="stylesheet">
     <link href="css/ripples.css" rel="stylesheet">
     <link href="css/material-wfont.min.css" rel="stylesheet">
@@ -69,8 +70,8 @@ if(Input::exists()) {
 <body>
 
 <div class="container">
-    <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
+    <div class="row">
+        <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12 col-centered">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Update Profile</h3>
@@ -88,10 +89,10 @@ if(Input::exists()) {
                                     <input class="form-control" type="email" placeholder="johndoe@email.com" name="email" id="email" value="<?php echo escape($user->data()->email); ?>" data-parsley-trigger="change" data-parsley-minlength="1" data-parsley-maxlength="255" required>
                                 </div>
 
-
                                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                                <input class="btn btn-primary" style="float:left;" type="submit" value="Update">
-                                <a class="btn btn-danger" style="float:right;" onclick="location.href='changepassword.php'">Change Password</a>
+                                <input class="btn btn-sm btn-primary" type="submit" value="Update">
+                                <a class="btn btn-sm btn-material-bluegrey" onclick="location.href='changepassword.php'">Change Password</a>
+
                             </fieldset>
                         </form>
                 </div>

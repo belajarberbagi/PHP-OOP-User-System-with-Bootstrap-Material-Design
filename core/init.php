@@ -22,11 +22,13 @@ $GLOBALS['config'] = array(
     )
 );
 
+define('SITE_ROOT', 'http://localhost:63342/PHP-OOP-User-System-with-Bootstrap-Material-Design'); //Don't add trailing / at the end
+
 spl_autoload_register(function($class) {
-    require_once 'classes/' . strtolower($class) . '.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/' . strtolower($class) . '.php';
 });
 
-require_once 'functions/sanitize.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/sanitize.php';
 
 if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('sessions/session_name'))) {
     $hash = Cookie::get(Config::get('remember/cookie_name'));

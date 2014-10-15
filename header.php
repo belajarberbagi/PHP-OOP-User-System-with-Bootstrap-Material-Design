@@ -10,7 +10,7 @@ $user = new User();
 <style>
     .navbar-login
     {
-        width: 250px;
+        width: 280px;
         padding: 10px;
         padding-bottom: 0px;
     }
@@ -110,12 +110,13 @@ $user = new User();
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 </head>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-material-googlegrey navbar-fixed-top" style="background-color: #404040; font-family: 'Roboto Condensed', sans-serif; font-size: 15px; font-weight: 400;" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a href="index.php" class="navbar-brand">Site Demo</a>
+            <a href="<?php echo SITE_ROOT; ?>/index.php" class="navbar-brand">Chris <strong>Tran</a></strong>
 
             <a class="navbar-toggle" data-toggle="collapse" data-target=".navbarCollapse">
                 <span class="icon-bar"></span>
@@ -130,17 +131,17 @@ $user = new User();
 
         <div class="collapse navbar-collapse navbarCollapse">
             <ul class="nav navbar-nav">
-                <li id="index"><a href="index.php">Dashboard</a></li>
-                <li id="profile"><a href="profile.php?user=<?php echo escape($user->data()->username); ?>">Profile</a></li>
-                <li class="visible-sm visible-xs" id="update"><a href="update.php">Edit Profile</a></li>
+                <li id="index"><a href="<?php echo SITE_ROOT; ?>/index.php">Dashboard</a></li>
+                <li id="profile"><a href="<?php echo SITE_ROOT; ?>/profile.php?user=<?php echo escape($user->data()->username); ?>">Profile</a></li>
+                <li class="visible-sm visible-xs" id="update"><a href="<?php echo SITE_ROOT; ?>/update.php">Edit Profile</a></li>
                 <?php
                 if($user->hasPermission('admin')) { //Show button for Admin Panel
                     ?>
-                    <li class="visible-sm visible-xs" id="admin"><a href="admin.php">Admin Panel</a></li>
+                    <li class="visible-sm visible-xs" id="admin"><a href="<?php echo SITE_ROOT; ?>/admin.php">Admin Panel</a></li>
                 <?php
                 }
                 ?>
-                <li class="visible-sm visible-xs" id="logout"><a href="logout.php">Log out</a></li>
+                <li class="visible-sm visible-xs" id="logout"><a href="<?php echo SITE_ROOT; ?>/logout.php">Log out</a></li>
             </ul>
 
 
@@ -155,17 +156,15 @@ $user = new User();
                         <li>
                             <div class="navbar-login">
                                 <div class="row">
-
                                     <div class="col-lg-12">
                                         <p class="text-center" style="font-size: 18px;"><strong><?php echo escape($user->data()->name); ?></strong></p>
                                         <p class="text-center" style="font-size: 12px;"><?php echo escape($user->data()->email); ?></p>
                                         <p class="text-center">
-                                            <button class="btn btn-primary btn-block btn-sm" onclick="location.href='update.php'">Edit Profile</button>
                                             <?php
                                             if($user->hasPermission('admin')) { //Show button for Admin Panel
                                             ?>
 
-                                                <button class="btn btn-success btn-block btn-sm" onclick="location.href='admin.php'">Admin Panel</button>
+                                                <button class="btn btn-success btn-md" onclick="location.href='<?php echo SITE_ROOT; ?>/admin.php'">Admin Panel</button>
 
                                             <?php
                                             }
@@ -175,13 +174,13 @@ $user = new User();
                                 </div>
                             </div>
                         </li>
-                        <li class="divider"></li>
                         <li>
                             <div class="navbar-login navbar-login-session">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <p>
-                                            <button class="btn btn-danger btn-block" onclick="location.href='logout.php'">Log out</button>
+                                        <p class="text-center">
+                                                <button class="btn btn-primary btn-sm" onclick="location.href='<?php echo SITE_ROOT; ?>/update.php'">Edit Profile</button>
+                                                <button class="btn btn-default btn-sm" onclick="location.href='<?php echo SITE_ROOT; ?>/logout.php'">Log out</button>
                                         </p>
                                     </div>
                                 </div>

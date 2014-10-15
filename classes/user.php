@@ -105,14 +105,26 @@ class User {
         return false;
     }
 
-    public function countUserTable($table) {
+    public function countTable($table) {
         $totalUsers = $this->_db->query('SELECT * FROM ' . $table);
             return $totalUsers->count();
     }
 
-    public function getUserInfo($order, $limit) { //getUserInfo('joined DESC', 2);
-        $userInfo = $this->_db->query('SELECT id, username, name, email, joined FROM users ORDER BY ' . $order . ' LIMIT ' . $limit);
-            return $userInfo->results();
+    public function getTable($table, $items = array(), $order, $limit) { //getUserInfo('joined DESC', 2);
+        $set = '';
+        $x = 1;
+
+        foreach($items as $item) {
+            $set .= "{$item}";
+            if($x < count ($items)) {
+                $set .= ', ';
+            }
+            $x++;
+        }
+
+            $tableInfo = $this->_db->query('SELECT ' . $set . ' FROM ' .$table . ' ORDER BY ' . $order . ' LIMIT ' . $limit);
+                return $tableInfo->results();
+
     }
 
     public function exists() {

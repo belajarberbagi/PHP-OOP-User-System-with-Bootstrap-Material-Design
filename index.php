@@ -19,6 +19,7 @@ if(!$user->isLoggedIn()) {
     <title>OOP Login/Register</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/material.css" rel="stylesheet">
     <link href="css/ripples.css" rel="stylesheet">
     <link href="css/material-wfont.min.css" rel="stylesheet">
@@ -55,8 +56,36 @@ if(!$user->isLoggedIn()) {
 
             <div class="jumbotron">
                 <div class="container">
-                    <h1>What's up <?php echo escape($user->data()->username); ?>!</h1>
+                    <h1>What's up <?php echo escape($user->data()->name); ?>!</h1>
                     <p>This is a PHP OOP Member System with Bootstrap Material Design.</p>
+                </div>
+            </div>
+
+            <div class="col-md-8 panel panel-default">
+                <div class="panel-body">
+                    <div class="panel-header">
+                        <h1>News</h1>
+                    </div>
+                    <hr>
+
+                    <?php
+                        foreach($user->getTable('news', array('title', 'author', 'body', 'date'), 'date DESC', 4) as $news) { //Output Last 4 News
+                    ?>
+
+                        <div class="panel-body">
+                            <h3 style="margin-top: 10px;"><?php echo escape($news->title); ?> <small style="font-size: 14px;">by <?php echo escape($news->author); ?></small></h3><hr>
+
+                                <?php echo html_entity_decode($news->body); ?><br>
+
+                            <hr style="margin-bottom: 15px;">
+                            <small class="pull-right" style="font-size: 10px; color: #777;" >Posted on <?php echo escape(date('m/j/Y \a\t g:i A',strtotime($news->date))); ?></small>
+                        </div>
+                    <br>
+
+                    <?php
+                        }
+                    ?>
+
                 </div>
             </div>
 
@@ -65,8 +94,6 @@ if(!$user->isLoggedIn()) {
         ?>
 
     </div>
-    <span class="btn btn-material-lightgreen" data-toggle=snackbar data-content="This is a Snackbar Test!" data-timeout="4000">Snackbar Test</span>
-
 </div>
 
 <?php require_once 'footer.php'; ?>
