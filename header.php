@@ -7,63 +7,6 @@ require_once 'core/init.php';
 
 $user = new User();
 ?>
-<style>
-    .navbar-login
-    {
-        width: 280px;
-        padding: 10px;
-        padding-bottom: 0px;
-    }
-
-    .navbar-login-session
-    {
-        padding: 10px;
-        padding-bottom: 0px;
-        padding-top: 0px;
-    }
-
-    .icon-size
-    {
-        font-size: 87px;
-    }
-
-    @media (max-width: 991px) {
-        .navbar-header {
-            float: none;
-        }
-        .navbar-left,.navbar-right {
-            float: none !important;
-        }
-        .navbar-toggle {
-            display: block;
-        }
-        .navbar-collapse {
-            border-top: 1px solid transparent;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-        .navbar-fixed-top {
-            top: 0;
-            border-width: 0 0 1px;
-        }
-        .navbar-collapse.collapse {
-            display: none!important;
-        }
-        .navbar-nav {
-            float: none!important;
-            margin-top: 7.5px;
-        }
-        .navbar-nav>li {
-            float: none;
-        }
-        .navbar-nav>li>a {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        .collapse.in{
-            display:block !important;
-        }
-    }
-</style>
 
 <script>
     $(document).ready(function() {
@@ -110,6 +53,7 @@ $user = new User();
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='css/style.css' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 </head>
 

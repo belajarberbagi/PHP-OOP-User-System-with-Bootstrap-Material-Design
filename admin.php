@@ -97,7 +97,28 @@ if(!$user->hasPermission('admin')) {
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <?php
+            //Admin Navigation
+            require_once '/admin/header.php';
+            ?>
+
+            <div class="col-md-8 pull-right">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Website Statistics</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge"><?php echo escape($user->countTable('users')); ?></span>
+                                <b>Registered Users</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 pull-right">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">News</h3>
@@ -123,23 +144,7 @@ if(!$user->hasPermission('admin')) {
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Website Statistics</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <span class="badge"><?php echo escape($user->countTable('users')); ?></span>
-                                <b>Registered Users</b>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-8">
+            <div class="col-md-8 pull-right">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Newest Users</h3>
