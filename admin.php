@@ -99,7 +99,7 @@ if(!$user->hasPermission('admin')) {
 
             <?php
             //Admin Navigation
-            require_once '/admin/header.php';
+            require_once ROOT . '/admin/header.php';
             ?>
 
             <div class="col-md-8 pull-right">
@@ -196,18 +196,18 @@ if(!$user->hasPermission('admin')) {
 
 </body>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/ripples.js"></script>
-<script src="js/material.js"></script>
-<script src="js/snackbar.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
-<script src="//cdn.ckeditor.com/4.4.5/standard/ckeditor.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/ripples.js"></script>
+    <script src="js/material.js"></script>
+    <script src="js/snackbar.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.4.5/standard/ckeditor.js"></script>
 
-<script type="text/javascript">
-    CKEDITOR.replace( 'news-body',
-        {
-            toolbar : 'Basic'
-        });
-</script>
+    <script type="text/javascript">
+        CKEDITOR.replace( 'news-body',
+            {
+                toolbar : 'Basic'
+            });
+    </script>
 
 </html>
