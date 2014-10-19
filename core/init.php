@@ -22,13 +22,19 @@ $GLOBALS['config'] = array(
     )
 );
 
+date_default_timezone_set('America/Los_Angeles');
+
+
 define('SITE_ROOT', 'http://localhost:63342/PHP-OOP-User-System-with-Bootstrap-Material-Design'); //Don't add trailing / at the end
 
+define('ROOT', dirname(dirname(__FILE__)));
+$_SERVER['DOCUMENT_ROOT'] = dirname(dirname(__FILE__));
+
 spl_autoload_register(function($class) {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/' . strtolower($class) . '.php';
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/' . strtolower($class) . '.php');
 });
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/sanitize.php';
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/functions/sanitize.php');
 
 if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('sessions/session_name'))) {
     $hash = Cookie::get(Config::get('remember/cookie_name'));

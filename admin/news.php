@@ -100,7 +100,8 @@ if(Input::get('submit')) {
                                 <textarea id="news-body" name="news-body"><?php echo escape($new->body); ?></textarea>
                             </div>
 
-                            <input class="btn btn-material-lightblue" style="float: left;" type="submit" id="submit" name="submit" value="Update">
+                            <input class="btn btn-sm btn-material-lightblue" style="float: left;" type="submit" id="submit" name="submit" value="Update">
+                            <a class="btn btn-sm btn-material-red" href="?id=<?php echo escape(Input::get('id')); ?>&delete=true" onclick="return confirm('Are you sure you want to delete this?');" style="text-decoration: none;">Delete</a>
                         </fieldset>
                     </form>
                 </div>

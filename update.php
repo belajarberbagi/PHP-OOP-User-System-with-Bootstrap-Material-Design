@@ -63,6 +63,7 @@ if(Input::exists()) {
     <link href="css/snackbar.css" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.5/parsley.js"></script>
 
     <?php require_once 'header.php'; ?>
 </head>
@@ -110,7 +111,6 @@ if(Input::exists()) {
     <script src="js/material.js"></script>
     <script src="js/snackbar.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.5/parsley.js"></script>
 
     <script>
         $("#update").parsley({
