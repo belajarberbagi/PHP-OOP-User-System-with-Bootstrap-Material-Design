@@ -130,7 +130,7 @@ if (Input::exists()) {
                             <div class="form-group">
                                 <label class="col-lg-2 control-label" for="email">Email</label>
                                     <div class="col-lg-10">
-                                        <input class="form-control" type="email" name="email" placeholder="johndoe@email.com" id="username" value="<?php echo escape(Input::get('email')); ?>" data-parsley-trigger="change" required/>
+                                        <input class="form-control" type="email" name="email" placeholder="johndoe@email.com" id="email" value="<?php echo escape(Input::get('email')); ?>" data-parsley-trigger="change" required/>
                                     </div>
                             </div>
 
