@@ -55,6 +55,7 @@ if(!$user->hasPermission('admin')) {
     <title>Admin Panel</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/material.css" rel="stylesheet">
     <link href="css/ripples.css" rel="stylesheet">
     <link href="css/material-wfont.min.css" rel="stylesheet">
@@ -97,13 +98,13 @@ if(!$user->hasPermission('admin')) {
                 </div>
             </div>
 
+            <div class="col-md-4">
             <?php
             //Admin Navigation
             require_once ROOT . '/admin/header.php';
             ?>
 
-            <div class="col-md-8 pull-right">
-                <div class="panel panel-primary">
+                <div class="panel panel-default-blue">
                     <div class="panel-heading">
                         <h3 class="panel-title">Website Statistics</h3>
                     </div>
@@ -118,8 +119,8 @@ if(!$user->hasPermission('admin')) {
                 </div>
             </div>
 
-            <div class="col-md-8 pull-right">
-                <div class="panel panel-primary">
+            <div class="col-md-8">
+                <div class="panel panel-default-blue">
                     <div class="panel-heading">
                         <h3 class="panel-title">News</h3>
                     </div>
@@ -136,16 +137,14 @@ if(!$user->hasPermission('admin')) {
                                     <textarea id="news-body" name="news-body" style="width: auto !important;"><?php echo escape(Input::get('news-body')); ?></textarea>
                                 </div>
 
-                                <input class="btn btn-material-bluegrey" style="float: left;" type="submit" value="Submit">
+                                <input class="btn btn-success" style="float: left;" type="submit" value="Submit">
                                 <a href="admin/news.php" class="btn btn-primary">Manage News</a>
                             </fieldset>
                         </form>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-8 pull-right">
-                <div class="panel panel-primary">
+                <div class="panel panel-default-blue">
                     <div class="panel-heading">
                         <h3 class="panel-title">Newest Users</h3>
                     </div>
@@ -161,7 +160,7 @@ if(!$user->hasPermission('admin')) {
                                 </thead>
 
                                 <?php
-                                foreach($user->getTable('users', array('id', 'name', 'username', 'email', 'kp'), 'joined DESC', 10) as $users) { //Output Last 10 Registered Users
+                                foreach($user->getTable('users', array('id', 'name', 'username', 'email', 'joined'), 'joined DESC', 10) as $users) { //Output Last 10 Registered Users
                                     ?>
 
                                     <tbody>
@@ -180,7 +179,7 @@ if(!$user->hasPermission('admin')) {
 
                             </table>
                         </div>
-                        <a href="admin/members.php" class="btn btn-primary">View All Members</a>
+                        <a href="admin/members.php?page=1" class="btn btn-primary">View All Members</a>
                     </div>
                 </div>
             </div>

@@ -73,7 +73,7 @@ if(Input::exists()) {
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12 col-centered">
-            <div class="panel panel-primary">
+            <div class="panel panel-default-blue">
                 <div class="panel-heading">
                     <h3 class="panel-title">Update Profile</h3>
                 </div>

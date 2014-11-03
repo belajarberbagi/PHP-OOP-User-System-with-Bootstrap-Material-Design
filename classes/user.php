@@ -110,7 +110,7 @@ class User {
             return $totalUsers->count();
     }
 
-    public function getTable($table, $items = array(), $order, $limit) { //getUserInfo('joined DESC', 2);
+    public function getTable($table, $items = array(), $order, $limit) { //getTable('users', array('id', 'name', 'username', 'email', 'joined'), 'joined DESC', 10);
         $set = '';
         $x = 1;
 

@@ -34,6 +34,13 @@ if(!$user->isLoggedIn()) {
 
 <body>
 
+<script>
+    //Make all images responsive
+    $(document).ready(function() {
+        $('img').addClass('img-responsive');
+    });
+</script>
+
 <div class="container">
     <div class="row">
 
@@ -73,7 +80,7 @@ if(!$user->isLoggedIn()) {
                     ?>
 
                         <div class="panel-body">
-                            <h3 style="margin-top: 10px;"><?php echo escape($news->title); ?> <small style="font-size: 14px;">by <?php echo escape($news->author); ?></small></h3><hr>
+                            <h3 style="margin-top: 10px;"><?php echo escape($news->title); ?> <small style="font-size: 12px;">by <?php echo escape($news->author); ?></small></h3><hr>
 
                                 <?php echo html_entity_decode($news->body); ?><br>
 
