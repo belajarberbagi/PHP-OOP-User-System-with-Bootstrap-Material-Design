@@ -13,37 +13,39 @@ if(!$user->hasPermission('admin')) {
 
 //Submit News
 if(Input::exists()) {
-    $validate = new Validate();
+    if(Input::get('submit')) {
+        $validate = new Validate();
 
-    $validate->check($_POST, array(
-        'news-title' => array(
-            'field_name' => 'Title',
-            'required' => true,
-            'min' => 1,
-            'max' => 255
-        ),
-        'news-body' => array(
-            'field_name' => 'Body',
-            'required' => true,
-            'min' => 1
-        )
-    ));
+        $validate->check($_POST, array(
+            'news-title' => array(
+                'field_name' => 'Title',
+                'required' => true,
+                'min' => 1,
+                'max' => 255
+            ),
+            'news-body' => array(
+                'field_name' => 'Body',
+                'required' => true,
+                'min' => 1
+            )
+        ));
 
-    if($validate->passed()) {
-        $admin = new Admin();
+        if ($validate->passed()) {
+            $admin = new Admin();
 
-        try {
-            $admin->insertNews(array(
-                'title' => Input::get('news-title'),
-                'body' => Input::get('news-body'),
-                'author' => $user->data()->username,
-                'date' => date('Y-m-d H:i:s')
-            ));
+            try {
+                $admin->insertNews(array(
+                    'title' => Input::get('news-title'),
+                    'body' => Input::get('news-body'),
+                    'author' => $user->data()->username,
+                    'date' => date('Y-m-d H:i:s')
+                ));
 
-            Session::flash('success', '<b>' . Input::get('news-title') . '</b> has been created.');
-            Redirect::to('../admin/news.php?page=1');
-        } catch (Exception $e) {
-            echo $error, '<br>';
+                Session::flash('success', '<b>' . Input::get('news-title') . '</b> has been created.');
+                Redirect::to('../admin/news.php?page=1');
+            } catch (Exception $e) {
+                echo $error, '<br>';
+            }
         }
     }
 }
@@ -59,7 +61,7 @@ if(Input::get('delete')) {
 }
 
 //Submit edited news
-if(Input::get('submit')) {
+if(Input::get('update')) {
     $admin = new Admin();
 
     $admin->updateNews(array(
@@ -159,22 +161,16 @@ if(Input::get('submit')) {
                             <fieldset>
                                 <div class="form-group">
                                     <label class="control-label" for="news-title">Title</label><br>
-                                    <input class="form-control" id="news-title" name="news-title" placeholder="Title"
-                                           value="<?php echo escape($new->title); ?>">
+                                    <input class="form-control" id="news-title" name="news-title" placeholder="Title" value="<?php echo escape($new->title); ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label" for="news-body">Body</label>
-                                    <textarea id="news-body"
-                                              name="news-body"><?php echo escape($new->body); ?></textarea>
+                                    <textarea id="news-body" name="news-body"><?php echo escape($new->body); ?></textarea>
                                 </div>
 
-                                <input class="btn btn-sm btn-material-lightblue" style="float: left;" type="submit"
-                                       id="submit" name="submit" value="Update">
-                                <a class="btn btn-sm btn-material-red"
-                                   href="?id=<?php echo escape(Input::get('id')); ?>&delete=true"
-                                   onclick="return confirm('Are you sure you want to delete this?');"
-                                   style="text-decoration: none;">Delete</a>
+                                <input class="btn btn-sm btn-material-lightblue" style="float: left;" type="submit" id="update" name="update" value="Update">
+                                <a class="btn btn-sm btn-material-red" href="?id=<?php echo escape(Input::get('id')); ?>&delete=true" onclick="return confirm('Are you sure you want to delete this?');" style="text-decoration: none;">Delete</a>
                             </fieldset>
                         </form>
                     </div>
@@ -206,7 +202,7 @@ if(Input::get('submit')) {
                                 <textarea id="news-body" name="news-body" style="width: auto !important;"><?php echo escape(Input::get('news-body')); ?></textarea>
                             </div>
 
-                            <input class="btn btn-success" style="float: left;" type="submit" value="Submit">
+                            <input class="btn btn-success" style="float: left;" type="submit" id="submit" name="submit" value="Submit">
                         </fieldset>
                     </form>
                 </div>
